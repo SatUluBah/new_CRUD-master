@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All people</title>
+</head>
+<body>
+
+<table border="1">
+    <tr>
+        <th>NAME</th>
+        <th>AGE</th>
+        <th>EMAIL</th>
+        <th>DETAILS</th>
+
+    </tr>
+    <tr th:each="person : ${people}">
+        <td th:text="${person.getName()}">name</td>
+        <td th:text="${person.getAge()}">age</td>
+        <td th:text="${person.getEmail()}">email</td>
+        <td><a th:href="@{/people/{id}(id=${person.getId()})}" > Action </a></td>
+    </tr>
+</table>
+
+<!--<div th:each="person : ${people}">-->
+<!--    <a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">user</a>-->
+<!--</div>-->
+<br/>
+<a th:href="@{/people/new}"> Add new Person </a>
+
+
+
+<br/>
+<br/>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout"/>
+</form>
+
+
+</body>
+</html>
